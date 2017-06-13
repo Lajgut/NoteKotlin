@@ -1,7 +1,9 @@
 package com.bravekitty.kir.notekotlin.models
 
+import io.realm.RealmObject
 
-class NoteModel {
+
+class NoteModel: RealmObject() {
 
     /**
      * note id
