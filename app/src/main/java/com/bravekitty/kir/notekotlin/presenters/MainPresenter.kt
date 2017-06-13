@@ -15,4 +15,10 @@ class MainPresenter : BasePresenter<MainView>() {
     init {
         App.appComponent.inject(this)
     }
+
+    override fun onFirstViewAttach() {
+        super.onFirstViewAttach()
+    }
+
+
 }

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
+import com.bravekitty.kir.notekotlin.App
 import com.bravekitty.kir.notekotlin.R
 import com.bravekitty.kir.notekotlin.database.RealmDatabase
 import kotlinx.android.synthetic.main.activity_editor.*
@@ -22,7 +23,7 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editor)
-        //App.appComponent.inject(this)
+        App.appComponent.inject(this)
 
         /**
          * not need now
@@ -51,7 +52,7 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
                 val df = SimpleDateFormat("dd-MMM-yyyy HH:mm")
                 val formattedDate = df.format(c.time)
 
-                realmDatabase!!.addNote(header, text, formattedDate, null)
+                realmDatabase.addNote(header, text, formattedDate, null)
                 finish()
             }
             R.id.iv_share -> {

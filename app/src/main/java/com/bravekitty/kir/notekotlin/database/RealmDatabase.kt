@@ -1,5 +1,7 @@
 package com.bravekitty.kir.notekotlin.database
 
+import android.util.Log
+import com.bravekitty.kir.notekotlin.App
 import com.bravekitty.kir.notekotlin.models.NoteModel
 import com.bravekitty.kir.notekotlin.utils.PrefUtils
 import io.realm.Realm
@@ -28,6 +30,7 @@ class RealmDatabase {
              * because it may bee need to know that later
              */
             //setLastId(id)
+            Log.d("realm", "note added")
 
         }
     }

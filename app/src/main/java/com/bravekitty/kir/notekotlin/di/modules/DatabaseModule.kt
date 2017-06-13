@@ -10,5 +10,5 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabae(): RealmDatabase = RealmDatabase()
+    fun provideDatabase(): RealmDatabase = RealmDatabase()
 }

@@ -2,7 +2,9 @@ package com.bravekitty.kir.notekotlin
 
 import android.app.Application
 import com.bravekitty.kir.notekotlin.di.AppComponent
+import com.bravekitty.kir.notekotlin.di.DaggerAppComponent
 import com.bravekitty.kir.notekotlin.di.modules.ContextModule
+import com.bravekitty.kir.notekotlin.di.modules.DatabaseModule
 import io.realm.Realm
 
 
@@ -25,9 +27,10 @@ class App : Application() {
         /**
          * dagger 2 init
          */
-        /*appComponent = DaggerAppComponent.builder()
+        appComponent = DaggerAppComponent.builder()
                 .contextModule(ContextModule(this@App))
-                .build()*/
+                .databaseModule(DatabaseModule())
+                .build()
 
     }
 }

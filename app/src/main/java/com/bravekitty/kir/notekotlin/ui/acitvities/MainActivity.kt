@@ -9,8 +9,10 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bravekitty.kir.notekotlin.R
 import com.bravekitty.kir.notekotlin.base_component.BaseActivity
+import com.bravekitty.kir.notekotlin.presenters.MainPresenter
 import com.bravekitty.kir.notekotlin.view_states.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -19,15 +21,20 @@ import org.jetbrains.anko.startActivity
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener,
         MainView {
 
+    @InjectPresenter
+    lateinit var mainPresenter: MainPresenter
+
     private var mContext: Context? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mContext = this@MainActivity
+
+        initUI()
     }
 
-    override fun initUI() {
+    fun initUI() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { startActivity<EditorActivity>() }
