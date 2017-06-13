@@ -10,12 +10,14 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import com.bravekitty.kir.notekotlin.R
-import com.bravekitty.kir.notekotlin.ui.FragmentTransitionListener
+import com.bravekitty.kir.notekotlin.base_component.BaseActivity
+import com.bravekitty.kir.notekotlin.view_states.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.startActivity
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, FragmentTransitionListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener,
+        MainView {
 
     private var mContext: Context? = null
 
@@ -23,7 +25,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mContext = this@MainActivity
+    }
 
+    override fun initUI() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { startActivity<EditorActivity>() }
@@ -86,12 +90,5 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onDestroy() {
         super.onDestroy()
         //realmDatabase!!.closeOnDestroy()
-    }
-
-    override fun initFragment(fragment: Fragment, tag: String) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.main_container, fragment)
-        fragmentTransaction.addToBackStack(tag)
-        fragmentTransaction.commit()
     }
 }

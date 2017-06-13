@@ -9,7 +9,7 @@ import com.bravekitty.kir.notekotlin.di.modules.ContextModule
 class App : Application() {
 
     companion object {
-        private var appComponent: AppComponent? = null
+        internal var appComponent: AppComponent? = null
     }
 
     override fun onCreate() {
