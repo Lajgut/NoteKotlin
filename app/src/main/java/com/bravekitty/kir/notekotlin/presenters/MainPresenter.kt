@@ -10,9 +10,9 @@ import javax.inject.Inject
 class MainPresenter : BasePresenter<MainView>() {
 
     @Inject
-    internal  var realmDatabase: RealmDatabase? = null
+    lateinit  var realmDatabase: RealmDatabase
 
     init {
-        App.appComponent!!.inject(this)
+        App.appComponent.inject(this)
     }
 }

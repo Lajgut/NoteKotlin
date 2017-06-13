@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'realm-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -50,7 +49,6 @@ dependencies {
     compile 'com.google.dagger:dagger:2.4'
     kapt 'com.google.dagger:dagger-compiler:2.4'
     provided 'org.glassfish:javax.annotation:10.0-b28'
-
     //moxy
     compile "com.arello-mobile:moxy:$moxyVersion"
     compile "com.arello-mobile:moxy-android:$moxyVersion"

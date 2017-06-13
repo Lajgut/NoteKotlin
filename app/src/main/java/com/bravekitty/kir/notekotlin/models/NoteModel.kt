@@ -3,7 +3,7 @@ package com.bravekitty.kir.notekotlin.models
 import io.realm.RealmObject
 
 
-class NoteModel (
+open class NoteModel (
     /**
      * note id
      */
@@ -31,7 +31,7 @@ class NoteModel (
     /**
      * constant ID for query by RealmDB
      */
-                    ) /*: RealmObject()*/ {
+                    ) : RealmObject() {
     companion object {
         val ID = "id"
     }
