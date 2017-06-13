@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.bravekitty.kir.notekotlin.App
 
-
 object PrefUtils {
     private val PREF_NAME = "pref_name"
     private val LAST_ID = "last_id"
@@ -15,9 +14,9 @@ object PrefUtils {
     val editor: SharedPreferences.Editor
         get() = prefs.edit()
 
-    var lastId: Long?
+    var lastId: Long
         get() = prefs.getLong(LAST_ID, 0L)
-        set(email) {
-            editor.putLong(LAST_ID, email!!).commit()
+        set(lastId) {
+            editor.putLong(LAST_ID, lastId).commit()
         }
 }

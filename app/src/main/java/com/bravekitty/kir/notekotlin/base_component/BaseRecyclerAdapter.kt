@@ -2,7 +2,7 @@ package com.bravekitty.kir.notekotlin.base_component
 
 import android.support.v7.widget.RecyclerView
 
-abstract class BaseRecyclerAdapter<VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
+open abstract class BaseRecyclerAdapter<VH : RecyclerView.ViewHolder> : RecyclerView.Adapter<VH>() {
 
     //var onItemClickListener: OnItemClickListener
 

@@ -6,11 +6,10 @@ import android.support.v4.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
-
 import com.bravekitty.kir.notekotlin.R
-import com.bravekitty.kir.notekotlin.ui.FragmentTransitionListener
 
-abstract class BaseFragment : Fragment() {
+
+open class BaseFragment : Fragment() {
 
     protected var mContext: Context? = null
     private var mProgressDialog: ProgressDialog? = null
