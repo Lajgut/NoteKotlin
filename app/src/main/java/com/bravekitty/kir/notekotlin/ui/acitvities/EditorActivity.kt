@@ -42,10 +42,10 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
                 var header = ""
                 var text = ""
                 if (!TextUtils.isEmpty(et_header!!.text)) {
-                    header = et_header!!.text.toString()
+                    header = et_header?.text.toString()
                 }
                 if (!TextUtils.isEmpty(et_text!!.text)) {
-                    text = et_text!!.text.toString()
+                    text = et_text?.text.toString()
                 }
 
                 val c = Calendar.getInstance()
@@ -57,8 +57,14 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.iv_share -> {
             }
+
             R.id.iv_voice -> {
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        realmDatabase.closeOnDestroy()
     }
 }
