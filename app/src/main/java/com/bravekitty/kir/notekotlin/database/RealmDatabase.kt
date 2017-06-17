@@ -2,6 +2,7 @@ package com.bravekitty.kir.notekotlin.database
 
 import android.util.Log
 import com.bravekitty.kir.notekotlin.models.NoteModel
+import com.bravekitty.kir.notekotlin.utils.PrefUtils
 import io.realm.Realm
 
 
@@ -9,7 +10,11 @@ class RealmDatabase {
 
     private var realmInstance: Realm = Realm.getDefaultInstance()
     private var note: NoteModel? = null
-    private var lastId: Long = 0
+    private var lastId
+    get() = PrefUtils.lastId
+    set(lastId) {
+        PrefUtils.lastId = lastId
+    }
 
     /**
      * add note to realm db
@@ -20,13 +25,13 @@ class RealmDatabase {
             val id = lastId + 1
 
             formNote(id, header, text, date, img)
-            /**
-             * save last id in prefs
-             * because it may bee need to know that later
-             */
-            //lastId = id
-            Log.d("realm", "note added")
 
+            /**
+             * increment last id and save it
+             */
+            lastId = id
+
+            Log.d("realm", "note added")
         }
     }
 
@@ -58,20 +63,13 @@ class RealmDatabase {
         }
     }
 
-
+    /**
+     * prepare photo for saving into realm
+     */
     /*Bitmap bmp = intent.getExtras().get("data");
     ByteArrayOutputStream stream = new ByteArrayOutputStream();
 bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
     byte[] byteArray = stream.toByteArray();*/
-
-
-    /*fun getLastId(): Long {
-        return PrefUtils.lastId
-    }
-
-    fun setLastId(lastId: Long) {
-        PrefUtils.lastId = lastId
-    }*/
 
     fun closeOnDestroy() {
         realmInstance.close()

@@ -9,7 +9,7 @@ object PrefUtils {
     private val LAST_ID = "last_id"
 
     val prefs: SharedPreferences
-        get() = App.appComponent!!.context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        get() = App.appComponent.context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 
     val editor: SharedPreferences.Editor
         get() = prefs.edit()

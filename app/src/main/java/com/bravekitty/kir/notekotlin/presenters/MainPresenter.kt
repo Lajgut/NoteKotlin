@@ -16,8 +16,8 @@ class MainPresenter : BasePresenter<MainView>() {
         App.appComponent.inject(this)
     }
 
-    override fun onFirstViewAttach() {
-        super.onFirstViewAttach()
+    fun closeRealm() {
+        realmDatabase.closeOnDestroy()
     }
 
 

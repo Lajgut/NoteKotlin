@@ -7,12 +7,14 @@ import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bravekitty.kir.notekotlin.R
 import com.bravekitty.kir.notekotlin.base_component.BaseActivity
 import com.bravekitty.kir.notekotlin.presenters.MainPresenter
+import com.bravekitty.kir.notekotlin.utils.PrefUtils
 import com.bravekitty.kir.notekotlin.view_states.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -30,6 +32,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mContext = this@MainActivity
+
 
         initUI()
     }
@@ -96,6 +99,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onDestroy() {
         super.onDestroy()
-        //realmDatabase!!.closeOnDestroy()
+        /**
+         * free resources when activity destroyed
+         */
+        mainPresenter.closeRealm()
     }
 }
