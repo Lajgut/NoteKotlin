@@ -29,6 +29,7 @@ ext {
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 kapt {
@@ -57,6 +58,8 @@ dependencies {
     //kotlin
     compile 'org.jetbrains.anko:anko:0.10.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    //realm adapter
+    compile 'io.realm:android-adapters:2.0.0'
     //test
     testCompile 'junit:junit:4.12'
 }
