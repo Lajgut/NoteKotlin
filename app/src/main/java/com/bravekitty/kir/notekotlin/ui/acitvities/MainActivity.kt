@@ -1,21 +1,20 @@
 package com.bravekitty.kir.notekotlin.ui.acitvities
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bravekitty.kir.notekotlin.R
 import com.bravekitty.kir.notekotlin.base_component.BaseActivity
 import com.bravekitty.kir.notekotlin.presenters.MainPresenter
-import com.bravekitty.kir.notekotlin.utils.PrefUtils
-import com.bravekitty.kir.notekotlin.view_states.MainView
+import com.bravekitty.kir.notekotlin.ui.fragments.MainFragment
+import com.bravekitty.kir.notekotlin.utils.instanceOf
+import com.bravekitty.kir.notekotlin.view_states.activity.MainView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.startActivity
@@ -33,7 +32,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         setContentView(R.layout.activity_main)
         mContext = this@MainActivity
 
-
         initUI()
     }
 
@@ -48,8 +46,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
-
-        //initFragment(MainFragment.newInstance(), MainFragment.TAG)
+        initFragment(instanceOf<MainFragment>(), MainFragment.TAG)
     }
 
     override fun onBackPressed() {
@@ -96,6 +93,14 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    override fun initFragment(fragment: Fragment, tag: String) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.main_container, fragment)
+        fragmentTransaction.addToBackStack(tag)
+        fragmentTransaction.commit()
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()

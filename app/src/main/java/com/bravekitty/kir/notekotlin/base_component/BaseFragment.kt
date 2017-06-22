@@ -6,10 +6,12 @@ import android.support.v4.app.Fragment
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import com.arellomobile.mvp.MvpAppCompatFragment
 import com.bravekitty.kir.notekotlin.R
+import org.jetbrains.anko.support.v4.toast
 
 
-open class BaseFragment : Fragment() {
+open class BaseFragment : MvpAppCompatFragment(), BaseView {
 
     protected var mContext: Context? = null
     private var mProgressDialog: ProgressDialog? = null
@@ -21,7 +23,7 @@ open class BaseFragment : Fragment() {
         //
     }
 
-    protected fun showProgressDialog() {
+    override fun showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = ProgressDialog(mContext, R.style.MyThemeCustomAlertDialogStyle)
             mProgressDialog!!.setCancelable(false)
@@ -31,7 +33,7 @@ open class BaseFragment : Fragment() {
         mProgressDialog!!.show()
     }
 
-    protected fun hideProgressDialog() {
+    override fun hideProgressDialog() {
         if (mProgressDialog != null && mProgressDialog!!.isShowing) {
             mProgressDialog!!.hide()
         }
@@ -46,11 +48,6 @@ open class BaseFragment : Fragment() {
         et.requestFocus()
         val keyboard = mContext!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         keyboard.showSoftInput(et, 0)
-    }
-
-
-    protected fun showToast(message: Int) {
-        Toast.makeText(mContext, getString(message), Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

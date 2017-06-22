@@ -1,8 +1,8 @@
-package com.bravekitty.kir.notekotlin.database
+package com.bravekitty.kir.notekotlin.data.database
 
 import android.util.Log
+import com.bravekitty.kir.notekotlin.data.PrefsData
 import com.bravekitty.kir.notekotlin.models.NoteModel
-import com.bravekitty.kir.notekotlin.utils.PrefUtils
 import io.realm.Realm
 
 
@@ -11,9 +11,9 @@ class RealmDatabase {
     private var realmInstance: Realm = Realm.getDefaultInstance()
     private var note: NoteModel? = null
     private var lastId
-    get() = PrefUtils.lastId
+    get() = PrefsData.lastId
     set(lastId) {
-        PrefUtils.lastId = lastId
+        PrefsData.lastId = lastId
     }
 
     /**

@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import com.bravekitty.kir.notekotlin.App
 import com.bravekitty.kir.notekotlin.R
-import com.bravekitty.kir.notekotlin.database.RealmDatabase
+import com.bravekitty.kir.notekotlin.data.database.RealmDatabase
 import kotlinx.android.synthetic.main.activity_editor.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,10 +29,11 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
          * not need now
          */
         iv_text_from_photo!!.visibility = View.GONE
-        iv_gallery!!.visibility = View.GONE
-        iv_done!!.setOnClickListener(this)
-        iv_share!!.setOnClickListener(this)
-        iv_voice!!.setOnClickListener(this)
+        iv_gallery.visibility = View.GONE
+
+        iv_done.setOnClickListener(this)
+        iv_share.setOnClickListener(this)
+        iv_voice.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {

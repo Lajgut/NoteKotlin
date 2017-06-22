@@ -9,6 +9,4 @@ interface BaseView : MvpView {
 
     fun hideProgressDialog()
 
-    fun initFragment(fragment: Fragment, tag: String)
-
 }

@@ -13,11 +13,4 @@ open class BaseActivity : MvpAppCompatActivity(), BaseView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun initFragment(fragment: Fragment, tag: String) {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.add(R.id.main_container, fragment)
-        fragmentTransaction.addToBackStack(tag)
-        fragmentTransaction.commit()
-    }
-
 }
