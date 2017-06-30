@@ -28,7 +28,8 @@ class NoteAdapter(
             /**
              * initialize containers and listeners
              */
-            //itemView.test.text = list[listIndex].text
+            itemView.text.text = list[listIndex].text
+            itemView.header.text = list[listIndex].header
 
         }
     }

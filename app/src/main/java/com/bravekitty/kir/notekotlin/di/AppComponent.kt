@@ -3,6 +3,7 @@ package com.bravekitty.kir.notekotlin.di
 import android.content.Context
 import com.bravekitty.kir.notekotlin.di.modules.ContextModule
 import com.bravekitty.kir.notekotlin.di.modules.DatabaseModule
+import com.bravekitty.kir.notekotlin.presenters.MainFragmentPresenter
 import com.bravekitty.kir.notekotlin.presenters.MainPresenter
 import com.bravekitty.kir.notekotlin.ui.acitvities.EditorActivity
 import com.bravekitty.kir.notekotlin.ui.acitvities.MainActivity
@@ -17,4 +18,5 @@ interface AppComponent {
     fun inject(mainPresenter: MainPresenter)
 
     fun inject(editorActivity: EditorActivity)
+    fun  inject(mainFragmentPresenter: MainFragmentPresenter) {}
 }

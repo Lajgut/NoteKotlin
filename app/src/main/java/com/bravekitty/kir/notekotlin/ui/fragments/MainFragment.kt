@@ -1,18 +1,24 @@
 package com.bravekitty.kir.notekotlin.ui.fragments
 
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearLayoutManager.VERTICAL
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bravekitty.kir.notekotlin.R
+import com.bravekitty.kir.notekotlin.adapters.NoteAdapter
 import com.bravekitty.kir.notekotlin.base_component.BaseFragment
+import com.bravekitty.kir.notekotlin.models.NoteModel
 import com.bravekitty.kir.notekotlin.presenters.MainFragmentPresenter
-import com.bravekitty.kir.notekotlin.utils.MsgConsole
 import com.bravekitty.kir.notekotlin.view_states.fragment.MainFragmentView
-import org.jetbrains.anko.bundleOf
+import io.realm.RealmResults
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment(), MainFragmentView {
 
@@ -37,6 +43,11 @@ class MainFragment : BaseFragment(), MainFragmentView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
 
+    override fun initNotesData(notesList: RealmResults<NoteModel>) {
+        val noteAdapter = NoteAdapter(notesList, null, false)
+        recycler_view.layoutManager = LinearLayoutManager(context, VERTICAL, false)
+        recycler_view.adapter = noteAdapter
     }
 }

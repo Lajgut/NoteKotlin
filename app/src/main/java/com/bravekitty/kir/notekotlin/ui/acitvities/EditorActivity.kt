@@ -7,7 +7,7 @@ import android.text.TextUtils
 import android.view.View
 import com.bravekitty.kir.notekotlin.App
 import com.bravekitty.kir.notekotlin.R
-import com.bravekitty.kir.notekotlin.data.database.RealmDatabase
+import com.bravekitty.kir.notekotlin.data.database.NoteRepository
 import kotlinx.android.synthetic.main.activity_editor.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,7 +18,7 @@ import javax.inject.Inject
 class EditorActivity : AppCompatActivity(), View.OnClickListener {
 
     @Inject
-    lateinit var realmDatabase: RealmDatabase
+    lateinit var noteRepository: NoteRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,7 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
                 val df = SimpleDateFormat("dd-MMM-yyyy HH:mm")
                 val formattedDate = df.format(c.time)
 
-                realmDatabase.addNote(header, text, formattedDate, null)
+                noteRepository.addNote(header, text, formattedDate, null)
                 finish()
             }
             R.id.iv_share -> {
@@ -62,10 +62,5 @@ class EditorActivity : AppCompatActivity(), View.OnClickListener {
             R.id.iv_voice -> {
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        realmDatabase.closeOnDestroy()
     }
 }

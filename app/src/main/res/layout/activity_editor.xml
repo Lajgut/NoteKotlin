@@ -31,7 +31,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Заголовок"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
@@ -61,8 +60,7 @@
             android:layout_height="match_parent"
             android:ems="10"
             android:inputType="textPersonName|textCapCharacters|textMultiLine"
-
-            android:text="Содержание" />
+            />
 
     </android.support.v4.widget.NestedScrollView>
 

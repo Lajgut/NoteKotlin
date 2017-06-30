@@ -4,9 +4,12 @@ import android.util.Log
 import com.bravekitty.kir.notekotlin.data.PrefsData
 import com.bravekitty.kir.notekotlin.models.NoteModel
 import io.realm.Realm
+import io.realm.RealmResults
 
 
-class RealmDatabase {
+
+
+class NoteRepository {
 
     private var realmInstance: Realm = Realm.getDefaultInstance()
     private var note: NoteModel? = null
@@ -20,7 +23,6 @@ class RealmDatabase {
      * add note to realm db
      */
     fun addNote(header: String, text: String, date: String, img: ByteArray?) {
-        Log.d("realm", realmInstance.toString())
         realmInstance.executeTransaction {
             val id = lastId + 1
 
@@ -61,6 +63,12 @@ class RealmDatabase {
             }
 
         }
+    }
+
+    //todo сделать запрос по количеству записей, при скролле
+    fun findAll() : RealmResults<NoteModel> {
+        val results = realmInstance.where(NoteModel::class.java).findAll()
+        return results
     }
 
     /**

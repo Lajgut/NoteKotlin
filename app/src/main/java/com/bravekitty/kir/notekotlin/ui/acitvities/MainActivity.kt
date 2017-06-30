@@ -11,10 +11,12 @@ import android.view.MenuItem
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bravekitty.kir.notekotlin.R
 import com.bravekitty.kir.notekotlin.base_component.BaseActivity
+import com.bravekitty.kir.notekotlin.models.NoteModel
 import com.bravekitty.kir.notekotlin.presenters.MainPresenter
 import com.bravekitty.kir.notekotlin.ui.fragments.MainFragment
 import com.bravekitty.kir.notekotlin.utils.instanceOf
 import com.bravekitty.kir.notekotlin.view_states.activity.MainView
+import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import org.jetbrains.anko.startActivity
@@ -64,32 +66,21 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
-
         if (id == R.id.action_settings) {
             return true
         }
-
         return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val id = item.itemId
-
         if (id == R.id.nav_camera) {
-
         } else if (id == R.id.nav_gallery) {
-
         } else if (id == R.id.nav_slideshow) {
-
         } else if (id == R.id.nav_manage) {
-
         } else if (id == R.id.nav_share) {
-
         } else if (id == R.id.nav_send) {
-
         }
-
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
@@ -101,12 +92,4 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         fragmentTransaction.commit()
     }
 
-
-    override fun onDestroy() {
-        super.onDestroy()
-        /**
-         * free resources when activity destroyed
-         */
-        mainPresenter.closeRealm()
-    }
 }
