@@ -44,7 +44,7 @@ class NoteRepository {
         note = realmInstance.createObject(NoteModel::class.java)
         note!!.id = id
         note!!.header = header
-        note!!.text = text
+        note!!.mainText = text
         note!!.date = date
         note?.img = img
     }

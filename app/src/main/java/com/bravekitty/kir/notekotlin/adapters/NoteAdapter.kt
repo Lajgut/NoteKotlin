@@ -12,7 +12,6 @@ import io.realm.OrderedRealmCollection
 import io.realm.RealmRecyclerViewAdapter
 import kotlinx.android.synthetic.main.item_note.view.*
 
-
 class NoteAdapter(
         private val list: MutableList<NoteModel>,
         data: OrderedRealmCollection<NoteModel>?,
@@ -24,12 +23,13 @@ class NoteAdapter(
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        internal fun bind(listIndex: Int) {
+        internal fun bind(listIndex: Int) = with(itemView) {
             /**
              * initialize containers and listeners
              */
-            itemView.text.text = list[listIndex].text
+            itemView.main_text.text = list[listIndex].mainText
             itemView.header.text = list[listIndex].header
+            itemView.data.text = list[listIndex].date
 
         }
     }

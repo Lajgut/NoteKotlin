@@ -4,26 +4,26 @@ import io.realm.RealmObject
 
 
 open class NoteModel (
-    /**
+        /**
      * note id
      */
     var id: Long = 0L,
-    /**
-     * text header
+        /**
+     * mainText header
      */
     var header: String? = null,
 
-    /**
-     * main text
+        /**
+     * main mainText
      */
-    var text: String = "",
+    var mainText: String = "",
 
-    /**
+        /**
      * photo, if added by user
      */
     var img: ByteArray? = null,
 
-    /**
+        /**
      * date of creating note
      */
     var date: String = ""
