@@ -6,6 +6,9 @@ import com.bravekitty.kir.notekotlin.di.DaggerAppComponent
 import com.bravekitty.kir.notekotlin.di.modules.ContextModule
 import com.bravekitty.kir.notekotlin.di.modules.DatabaseModule
 import io.realm.Realm
+import io.realm.RealmConfiguration
+
+
 
 
 class App : Application() {
@@ -22,7 +25,7 @@ class App : Application() {
         /**
          * init realm once, at app start
          */
-        Realm.init(this)
+        initRealmConfiguration()
 
         /**
          * dagger 2 init
@@ -32,5 +35,13 @@ class App : Application() {
                 .databaseModule(DatabaseModule())
                 .build()
 
+    }
+
+    private fun initRealmConfiguration() {
+        Realm.init(this)
+        val realmConfiguration = RealmConfiguration.Builder()
+                .deleteRealmIfMigrationNeeded()
+                .build()
+        Realm.setDefaultConfiguration(realmConfiguration)
     }
 }
